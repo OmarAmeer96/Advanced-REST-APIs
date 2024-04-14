@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_apis/manager/home_cubit/home_cubit.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -30,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
     // );
 
     // 4
-    BlocProvider.of<HomeCubit>(context).deleteUserById(6850071);
+    // BlocProvider.of<HomeCubit>(context).deleteUserById(6850071);
   }
 
   @override
@@ -48,7 +46,7 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: const Text('Home View'),
       ),
-      body: Column(
+      body: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // 1
@@ -165,25 +163,26 @@ class _HomeViewState extends State<HomeView> {
           //   },
           // ),
 
-          BlocBuilder<HomeCubit, HomeState>(
-            builder: (context, state) {
-              if (state is HomeLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is DeleteUserById) {
-                return Center(child: Text(state.data.toString()));
-              } else if (state is HomeFailure) {
-                return Center(
-                  child: Text(state.error),
-                );
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
-          ),
+          // 4
+          // BlocBuilder<HomeCubit, HomeState>(
+          //   builder: (context, state) {
+          //     if (state is HomeLoading) {
+          //       return const Center(
+          //         child: CircularProgressIndicator(),
+          //       );
+          //     } else if (state is DeleteUserById) {
+          //       return Center(child: Text(state.data.toString()));
+          //     } else if (state is HomeFailure) {
+          //       return Center(
+          //         child: Text(state.error),
+          //       );
+          //     } else {
+          //       return const Center(
+          //         child: CircularProgressIndicator(),
+          //       );
+          //     }
+          //   },
+          // ),
         ],
       ),
     );
